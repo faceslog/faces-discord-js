@@ -1,0 +1,34 @@
+{
+    "name": "bot-discord-faces",
+    "version": "1.0.0",
+    "description": "faces-discord-bot",
+    "main": "index.js",
+    "scripts": {
+        "test": "!"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/Faces_/bot-discord-faces.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/Faces_/bot-discord-faces/issues"
+    },
+    "homepage": "https://gitlab.com/Faces_/bot-discord-faces#readme",
+    "dependencies": {
+        "ascii-table": "0.0.9",
+        "axios": "^0.19.2",
+        "common-tags": "^1.8.0",
+        "discord.js": "^12.3.1",
+        "discord.js-commando": "^0.10.0",
+        "dotenv": "^8.2.0",
+        "got": "^11.3.0",
+        "mathjs": "^7.0.1",
+        "node-fetch": "^2.6.0",
+        "pornsearch": "^2.4.3",
+        "snekfetch": "^4.0.4",
+        "ytdl-core": "^2.1.7",
+        "ytdl-core-discord": "^1.2.0"
+    }
+}
