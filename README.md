@@ -5,7 +5,7 @@
 npm install <br />
 node index.js<br />
 
-*Please make sure you have fill the proper informations in the config.json*
+*Please make sure you have filled the proper informations in the config.json*
 
 ### API KEYS:
 *https://newsapi.org/*<br />
@@ -15,10 +15,10 @@ node index.js<br />
 *https://docs.genius.com/*<br />
 
 ## TO FIX:
-steam commands 
+Steam commands is prompting only CSGO game 
 
 ## TO DO:
-Remplace loggin json file by a Mongodb system :) <br />
+Replace messages loggin into a json file by a Mongodb system :) <br />
 
 Have Fun :)
 
