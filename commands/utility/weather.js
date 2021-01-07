@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const axios = require('axios')
-const { weatherAPI } = require('../../config.json');
+const weatherAPI = process.env.WEATHER_API;
 
 const weatherEmbed = (
         temp,

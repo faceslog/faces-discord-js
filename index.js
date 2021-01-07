@@ -1,7 +1,11 @@
+require('dotenv').config();
+
 const { Client, Collection } = require("discord.js");
 const { logSystem } = require("./handlers/functions");
-const { prefix, token } = require('./config.json');
 const fs = require("fs");
+
+const prefix = process.env.PREFIX;
+const token = process.env.TOKEN;
 
 const client = new Client({
     disableEveryone: false,
@@ -25,7 +29,7 @@ client.on("ready", () => {
     console.log(`Faces Bot Is Ready, name is ${client.user.username}`);
 
     client.user.setActivity(`${prefix}help`, {
-        type: "PLAYING",
+        type: "STREAMING",
     });
 });
 

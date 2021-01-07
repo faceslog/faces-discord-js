@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { tenorAPI } = require('../../config.json');
+const tenorAPI = process.env.TENOR_API;
 
 module.exports = {
     name: "gif",

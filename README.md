@@ -5,7 +5,7 @@
 npm install <br />
 node index.js<br />
 
-*Please make sure you have filled the proper informations in the config.json*
+*Please make sure you have filled the proper informations in the .env*
 
 ### API KEYS:
 *https://newsapi.org/*<br />
