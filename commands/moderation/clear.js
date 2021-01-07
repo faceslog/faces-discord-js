@@ -1,5 +1,3 @@
-const { MessageEmbed } = require("discord.js");
-
 module.exports = {
     name: "clear",
     aliases: ["delete-messages", "bulk-delete"],
@@ -22,7 +20,7 @@ module.exports = {
 
         let numberOfMessagesToDelete = args[0];
 
-        if (isNaN(numberOfMessagesToDelete) == false) {
+        if (isNaN(numberOfMessagesToDelete) === false) {
 
             if (numberOfMessagesToDelete < 0 || numberOfMessagesToDelete > 100) {
                 return message.reply("The maximum number of message you can delete is up to 100 !");
@@ -31,6 +29,7 @@ module.exports = {
             message.channel
                 .bulkDelete(numberOfMessagesToDelete)
                 .catch(e => {
+                    console.error(e);
                     return message.reply(
                         'Something went wrong when trying to delete messages :( maybe messages are too old to be deleted ?'
                     );
