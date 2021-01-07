@@ -18,7 +18,7 @@ module.exports = {
             return message.reply('Please provide me something to search for !');
         }
 
-        let drivers = ['pornhub', 'sex', 'redtube', 'xvideos', 'youporn'];
+        let drivers = ['pornhub', 'sex', 'redtube', 'xvideos'];
 
         function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));

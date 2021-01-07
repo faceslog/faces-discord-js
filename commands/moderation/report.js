@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
-const { getChannel, makeChannel } = require("../../functions.js");
+const { getChannel, makeChannel } = require("../../handlers/functions.js");
 
 var report_count = 0;
 

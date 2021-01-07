@@ -1,5 +1,5 @@
 const { Client, Collection } = require("discord.js");
-const { logSystem } = require("./functions");
+const { logSystem } = require("./handlers/functions");
 const { prefix, token } = require('./config.json');
 const fs = require("fs");
 

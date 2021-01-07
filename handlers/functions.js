@@ -1,4 +1,4 @@
-const { client } = require("./index.js");
+const { client } = require("../index.js");
 const fs = require('fs');
 
 const ID_REGEX = /[0-9]+/;

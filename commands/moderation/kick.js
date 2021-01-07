@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
-const { promptMessage, getChannel } = require("../../functions.js");
+const { promptMessage, getChannel } = require("../../handlers/functions.js");
 
 module.exports = {
     name: "kick",
@@ -44,18 +44,15 @@ module.exports = {
         // No member found
         if (!toKick) {
             return message.reply("Couldn't find that member, try again");
-
         }
 
         // Can't kick yourself
         if (toKick.id === message.author.id) {
-
             return message.reply("You can't kick yourself...");
         }
 
         // Check if the user's kickable
         if (!toKick.kickable) {
-
             return message.reply("I can't kick that person due to role hierarchy, I suppose.");
         }
 

@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
-const { getMember, formatDate } = require("../../functions.js");
+const { getMember, formatDate } = require("../../handlers/functions.js");
 
 module.exports = {
     name: "whois",
