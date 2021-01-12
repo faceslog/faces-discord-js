@@ -9,7 +9,8 @@ module.exports = {
     run: (client, message, args) => {
 
 
-        if (!message.channel.nsfw) {
+        if (!message.channel.nsfw) 
+        {
             message.react('💢');
             return message.channel.send('NSFW cannot be posted in this channel');
         }
