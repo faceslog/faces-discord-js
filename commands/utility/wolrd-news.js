@@ -11,12 +11,15 @@ module.exports = {
     run: async(client, message, args) => {
 
         // powered by NewsAPI.org
-        try {
+        try 
+        {
             const response = await fetch(
                 `https://newsapi.org/v2/top-headlines?sources=reuters&pageSize=5&apiKey=${newsAPI}`
             );
+
             const json = await response.json();
             const articleArr = json.articles;
+
             let processArticle = article => {
                 const embed = new MessageEmbed()
                     .setColor('#FF4F00')
@@ -29,16 +32,20 @@ module.exports = {
                     .setFooter('powered by NewsAPI.org');
                 return embed;
             };
+
             async function processArray(array) {
                 for (const article of array) {
                     const msg = await processArticle(article);
                     message.channel.send(msg);
                 }
             }
+
             await processArray(articleArr);
-        } catch (e) {
+
+        } catch (e) 
+        {
             message.channel.send('Something failed along the way');
-            return console.error(e);
+            console.error(e);
         }
     }
 }

@@ -19,7 +19,6 @@ module.exports = {
         .then(res => {
             
             const song = res[0];
-            console.log(JSON.stringify(song));
             const embed = new MessageEmbed()
             .setColor('#FFFF00')
             .addField('**🎧 Artist:**', `\`\`\`${song.artist.name}\`\`\``)

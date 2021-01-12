@@ -5,24 +5,30 @@ module.exports = {
     description: "Delete amount of recent messages",
     usage: "<input>",
     run: (client, message, args) => {
-        if (!message.member.hasPermission("MANAGE_CHANNELS") && !message.member.hasPermission("MANAGE_MESSAGES")) {
+
+        if (!message.member.hasPermission("MANAGE_CHANNELS") && !message.member.hasPermission("MANAGE_MESSAGES")) 
+        {
             return message.reply("❌ You do not have permissions to delete message. Please contact a staff member");
         }
 
         // No bot permissions
-        if (!message.guild.me.hasPermission("MANAGE_CHANNELS") || !message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+        if (!message.guild.me.hasPermission("MANAGE_CHANNELS") || !message.guild.me.hasPermission("MANAGE_MESSAGES")) 
+        {
             return message.reply("❌ I do not have permissions to delete messages. Please contact a staff member");
         }
 
-        if (!args[0]) {
+        if (!args[0]) 
+        {
             return message.reply("Please provide a number of messages to delete. Max amount is 100");
         }
 
         let numberOfMessagesToDelete = args[0];
 
-        if (isNaN(numberOfMessagesToDelete) === false) {
+        if (isNaN(numberOfMessagesToDelete) === false) 
+        {
 
-            if (numberOfMessagesToDelete < 0 || numberOfMessagesToDelete > 100) {
+            if (numberOfMessagesToDelete < 0 || numberOfMessagesToDelete > 100) 
+            {
                 return message.reply("The maximum number of message you can delete is up to 100 !");
             }
 
@@ -34,8 +40,9 @@ module.exports = {
                         'Something went wrong when trying to delete messages :( maybe messages are too old to be deleted ?'
                     );
                 });
-        } else {
-
+        } 
+        else 
+        {
             return message.reply("Please provide a right number of messages to delete");
         }
 

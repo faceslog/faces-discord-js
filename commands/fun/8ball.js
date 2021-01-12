@@ -16,7 +16,7 @@ module.exports = {
         
         if (!question.includes("?"))return message.channel.send("Since you are asking a question please put a **?** at the end");
 
-        const replies = [ 'Yes', 'No', 'I dont\'t know', 'Maybe', 'Of course', 'To be honest I don\'t care', '... Ok shut up your question is as trash as you' ];
+        const replies = [ 'Yes', 'No', 'I dont\'t know', 'Maybe', 'Of course', 'To be honest I don\'t care'];
         
         const reponse = Math.floor(Math.random() * replies.length);       
 

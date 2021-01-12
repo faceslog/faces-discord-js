@@ -33,8 +33,6 @@ module.exports = {
 
         makeChannel(message, channelName);
 
-        //message.reply("A support ticket was open !");
-
         report_count = report_count + 1;
 
         setTimeout(async function() {

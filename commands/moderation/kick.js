@@ -12,7 +12,8 @@ module.exports = {
 
         let modChannel = await getChannel("logs", message.guild);
 
-        if (!modChannel) {
+        if (!modChannel) 
+        {
             modChannel = message.channel;
             message.channel.send('You can create a #logs channel to send a log of the kick');
         }
@@ -20,41 +21,33 @@ module.exports = {
         if (message.deletable) message.delete();
 
         // No args
-        if (!args[0]) {
-            return message.reply("Please provide a person to kick.");
-        }
+        if (!args[0]) return message.reply("Please provide a person to kick.");
 
         // No reason
-        if (!args[1]) {
-            return message.reply("Please provide a reason to kick.");
-        }
+        if (!args[1]) return message.reply("Please provide a reason to kick.");
 
         // No author permissions
-        if (!message.member.hasPermission("KICK_MEMBERS")) {
+        if (!message.member.hasPermission("KICK_MEMBERS")) 
+        {
             return message.reply("❌ You do not have permissions to kick members. Please contact a staff member");
         }
 
         // No bot permissions
-        if (!message.guild.me.hasPermission("KICK_MEMBERS")) {
+        if (!message.guild.me.hasPermission("KICK_MEMBERS")) 
+        {
             return message.reply("❌ I do not have permissions to kick members. Please contact a staff member");
         }
 
         const toKick = message.mentions.members.first() || message.guild.members.get(args[0]);
 
         // No member found
-        if (!toKick) {
-            return message.reply("Couldn't find that member, try again");
-        }
-
+        if (!toKick) return message.reply("Couldn't find that member, try again");
+   
         // Can't kick yourself
-        if (toKick.id === message.author.id) {
-            return message.reply("You can't kick yourself...");
-        }
-
+        if (toKick.id === message.author.id) return message.reply("You can't kick yourself...");
+ 
         // Check if the user's kickable
-        if (!toKick.kickable) {
-            return message.reply("I can't kick that person due to role hierarchy, I suppose.");
-        }
+        if (!toKick.kickable) return message.reply("I can't kick that person due to role hierarchy, I suppose.");
 
         const embed = new MessageEmbed()
             .setColor("#ff0000")

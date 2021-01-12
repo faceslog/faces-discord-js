@@ -9,10 +9,8 @@ module.exports = {
     usage: "<input>",
     run: (client, message, args) => {
 
-        if (args > 50) {
-            return message.reply('Oops what you ask me is too accurate to be found !');
-        }
-
+        if (args > 50) return message.reply('Oops what you ask me is too accurate to be found !');
+            
         fetch(`https://api.tenor.com/v1/random?key=${tenorAPI}&q=${args}&limit=1`)
             .then(res => res.json())
             .then(json => message.channel.send(json.results[0].url))

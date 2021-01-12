@@ -41,8 +41,7 @@ module.exports = {
             return message.reply('Please enter the name of a city !');
         }
 
-        axios
-            .get(
+        axios.get(
                 `https://api.openweathermap.org/data/2.5/weather?q=${args}&units=metric&appid=${weatherAPI}`
             )
             .then(response => {
@@ -62,6 +61,7 @@ module.exports = {
                 message.channel.send(weatherEmbed(currentTemp, maxTemp, minTemp, pressure, humidity, wind, cloudness, icon, author, profile, cityName, country));
             }).catch(err => {
                 message.reply(`Error finding this city`);
+                console.error(err);
             })
 
 

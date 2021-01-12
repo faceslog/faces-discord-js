@@ -15,9 +15,13 @@ module.exports = {
         }
 
         var equation = args;
-        try {
+
+        try 
+        {
             var solution = math.evaluate(equation);
-        } catch (err) {
+        } 
+        catch (err) 
+        {
             return message.channel.send(`❎ | I couldn\'t solve that equation! \`${err}\``)
         }
 

@@ -32,9 +32,7 @@ module.exports = {
             .setDescription(args.slice(2).join(" "))
             .setColor(color)
             .setTimestamp()
-            //.setImage(client.user.displayAvatarURL)
             .setAuthor(`${args[0]}`, message.author.displayAvatarURL);
-
         message.channel.send(embed);
 
     }
