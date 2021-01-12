@@ -18,6 +18,7 @@
     "homepage": "https://gitlab.com/Faces_/bot-discord-faces#readme",
     "dependencies": {
         "ascii-table": "0.0.9",
+        "asciify-image": "^0.1.6",
         "axios": "^0.21.1",
         "common-tags": "^1.8.0",
         "discord.js": "^12.3.1",
