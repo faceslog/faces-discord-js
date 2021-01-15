@@ -37,15 +37,18 @@ echo "Not running"
     fi
   ;;
  screen)
-   screen -r $SCREEN
+   screen -dr $SCREEN
  ;;
  reload)
-   screen -S $SCREEN -p 0 -X stuff `printf "reload\r"`
+   echo "Reloading Server ..."
+   screen -X -S $SCREEN kill
+   screen -dmS $SCREEN $COMMAND
+   echo "Reloaded Server [$NAME]"
  ;;
  stop)
   if ( running )
   then
-screen -S $SCREEN -p 0 -X stuff `printf "stop\r"`
+   screen -X -S $SCREEN kill
    echo "Stopping server [$NAME]"
   else
 echo "Server [$NAME] is not running"
