@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const { Client, Collection } = require("discord.js");
-const { logSystem } = require("./handlers/functions");
 const fs = require("fs");
 
 const prefix = process.env.PREFIX;
@@ -36,13 +35,7 @@ client.on("ready", () => {
 client.on("message", async(message) => {
 
     if (message.author.bot) return;
-    if (message.guild) {
-
-        logSystem(message);
-
-    } else {
-        return;
-    }
+    if (!message.guild) return;
 
     if (!message.content.startsWith(prefix)) return;
 

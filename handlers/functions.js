@@ -41,16 +41,13 @@ module.exports = {
 
         return target;
     },
-
     formatDate: function(date) {
         return new Intl.DateTimeFormat('en-US').format(date);
     },
-
     // Get a channel from and id or name
     getChannel: function(channelResolvable, fromGuild) {
         return getGeneric("channels", "name", channelResolvable, fromGuild);
     },
-
     getChannels: async function(str, fromGuild) {
         const channels = [],
             elements = str.split(" ");
@@ -65,7 +62,6 @@ module.exports = {
 
         return channels;
     },
-
     promptMessage: async function(message, author, time, validReactions) {
         // We put in the time as seconds, with this it's being transfered to MS
         time *= 1000;
@@ -97,33 +93,6 @@ module.exports = {
                 },
             ],
             reason: 'New channel added'
-        });
-
-    },
-    logSystem: async function(message) {
-
-        if (!message.member) message.member = await message.guild.fetchMember(message);
-        //get the exact date of the message
-        var getDate = Date(Date.now());
-        var date = getDate.toString();
-
-        const guild_name = message.guild.name.toString('utf8');
-        const msg_converted = message.content.toString('utf8');
-        const author_converted = message.author.username.toString('utf8');
-        const channel_converter = message.channel.name.toString('utf8');
-
-        var logsfile = JSON.parse(fs.readFileSync("log.json"));
-
-        var log = { guild: guild_name, date: date, channel: channel_converter, author: author_converted, msg: msg_converted };
-
-        logsfile = [...logsfile, log];
-
-        fs.writeFile("log.json", JSON.stringify(logsfile, null, 4), function(err) {
-            if (err) {
-                return console.error(err);
-            }
-
-            console.log(`${date} --->LOG Envoyé Author: ${author_converted} Content: ${msg_converted}`);
         });
 
     },
