@@ -2,7 +2,9 @@ const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const { getChannel, makeChannel } = require("../../handlers/functions.js");
 
-var report_count = 0;
+const random = (length = 8) => {
+    return Math.random().toString(16).substr(2, length);
+};
 
 module.exports = {
     name: "report",
@@ -29,11 +31,8 @@ module.exports = {
             return message.reply("Please provide a reason for the report");
 
         // Create a new channel for the ticket
-        channelName = "report" + report_count + "";
-
+        let channelName = "report-" + random(6);
         makeChannel(message, channelName);
-
-        report_count = report_count + 1;
 
         setTimeout(async function() {
 

@@ -1,5 +1,4 @@
 const { client } = require("../index.js");
-const fs = require('fs');
 
 const ID_REGEX = /[0-9]+/;
 
@@ -12,7 +11,7 @@ async function getGeneric(from, altToId, resolvable, source) {
     let g;
 
     if (matches)
-        try { g = haystack.fetch ? await haystack.fetch(matches[0]) : haystack.cache.get(matches[0]); } catch {}; // can fail because names can contain numbers
+        try { g = haystack.fetch ? await haystack.fetch(matches[0]) : haystack.cache.get(matches[0]); } catch {} // can fail because names can contain numbers
 
     if (!g)
         g = haystack.cache.find(elm => elm[altToId] === resolvable);
@@ -45,25 +44,11 @@ module.exports = {
         return new Intl.DateTimeFormat('en-US').format(date);
     },
     // Get a channel from and id or name
-    getChannel: function(channelResolvable, fromGuild) {
-        return getGeneric("channels", "name", channelResolvable, fromGuild);
-    },
-    getChannels: async function(str, fromGuild) {
-        const channels = [],
-            elements = str.split(" ");
-
-        if (elements.length) {
-            for (const resolvable of elements) {
-                const chan = await getChannel(resolvable, fromGuild);
-                if (chan)
-                    channels.push(chan);
-            }
-        }
-
-        return channels;
+    getChannel: async function(channelResolvable, fromGuild) {
+        return await getGeneric("channels", "name", channelResolvable, fromGuild);
     },
     promptMessage: async function(message, author, time, validReactions) {
-        // We put in the time as seconds, with this it's being transfered to MS
+        // We put in the time as seconds, with this it's being transferred to MS
         time *= 1000;
 
         // For every emoji in the function parameters, react in the good order.
@@ -73,13 +58,13 @@ module.exports = {
         // and the emoji must be in the array we provided.
         const filter = (reaction, user) => validReactions.includes(reaction.emoji.name) && user.id === author.id;
 
-        // And ofcourse, await the reactions
+        // And of course, await the reactions
         return message
             .awaitReactions(filter, { max: 1, time: time })
             .then(collected => collected.first() && collected.first().emoji.name);
     },
     makeChannel: function(message, channelName) {
-        var guild = message.guild;
+        let guild = message.guild;
 
         guild.channels.create(channelName, {
             type: 'text',
@@ -95,10 +80,5 @@ module.exports = {
             reason: 'New channel added'
         });
 
-    },
-    getRoleID: async function(message, roleName) {
-        console.log('Test' + message.guild.id + 'name : ' + roleName);
-        let role = message.guild.roles.cache.find(role => role.name === `${roleName}`);
-        return role;
     }
 }

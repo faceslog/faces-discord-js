@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
-const { promptMessage, getChannel } = require("../../handlers/functions.js");
+const { promptMessage } = require("../../handlers/functions.js");
 
 module.exports = {
     name: "kick",
@@ -8,15 +8,6 @@ module.exports = {
     description: "Kicks the member",
     usage: "<id | mention>",
     run: async(client, message, args) => {
-        if (message.deletable) message.delete();
-
-        let modChannel = await getChannel("logs", message.guild);
-
-        if (!modChannel) 
-        {
-            modChannel = message.channel;
-            message.channel.send('You can create a #logs channel to send a log of the kick');
-        }
 
         if (message.deletable) message.delete();
 
@@ -27,16 +18,12 @@ module.exports = {
         if (!args[1]) return message.reply("Please provide a reason to kick.");
 
         // No author permissions
-        if (!message.member.hasPermission("KICK_MEMBERS")) 
-        {
+        if (!message.member.hasPermission("KICK_MEMBERS"))
             return message.reply("❌ You do not have permissions to kick members. Please contact a staff member");
-        }
 
         // No bot permissions
-        if (!message.guild.me.hasPermission("KICK_MEMBERS")) 
-        {
+        if (!message.guild.me.hasPermission("KICK_MEMBERS"))
             return message.reply("❌ I do not have permissions to kick members. Please contact a staff member");
-        }
 
         const toKick = message.mentions.members.first() || message.guild.members.get(args[0]);
 
@@ -51,8 +38,8 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setColor("#ff0000")
-            .setThumbnail(toKick.user.displayAvatarURL)
-            .setFooter(message.member.displayName, message.author.displayAvatarURL)
+            .setThumbnail(toKick.user.displayAvatarURL())
+            .setFooter(message.member.displayName, message.author.displayAvatarURL())
             .setTimestamp()
             .setDescription(stripIndents `**> Kicked member:** ${toKick} (${toKick.id})
             **> Kicked by:** ${message.member} (${message.member.id})
@@ -69,20 +56,21 @@ module.exports = {
             const emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
 
             // The verification stuffs
-            if (emoji === "✅") {
-                msg.delete();
+            if (emoji === "✅")
+            {
+                await msg.delete();
 
                 toKick.kick(args.slice(1).join(" "))
                     .catch(err => {
                         if (err) return message.channel.send(`Well.... the kick didn't work out. Here's the error ${err}`);
                     });
 
-                modChannel.send(embed);
-            } else if (emoji === "❌") {
-                msg.delete();
-
-                message.reply(`Kick canceled.`)
-                    .then(m => m.delete());
+                message.reply(embed);
+            }
+            else if (emoji === "❌")
+            {
+                await msg.delete();
+                message.reply(`Kick canceled.`).then(m => m.delete());
             }
         });
     }

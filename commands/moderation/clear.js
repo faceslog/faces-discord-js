@@ -23,6 +23,7 @@ module.exports = {
         }
 
         let numberOfMessagesToDelete = args[0];
+        numberOfMessagesToDelete++;
 
         if (isNaN(numberOfMessagesToDelete) === false) 
         {

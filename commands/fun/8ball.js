@@ -16,14 +16,14 @@ module.exports = {
         
         if (!question.includes("?"))return message.channel.send("Since you are asking a question please put a **?** at the end");
 
-        const replies = [ 'Yes', 'No', 'I dont\'t know', 'Maybe', 'Of course', 'To be honest I don\'t care'];
+        const replies = [ 'Yes', 'No', 'I don\'t know', 'Maybe', 'Of course', 'To be honest I don\'t care'];
         
-        const reponse = Math.floor(Math.random() * replies.length);       
+        const response = Math.floor(Math.random() * replies.length);
 
         const embed = new MessageEmbed()
             .setColor('#767CC1')
             .addField('**❓ Question**', `\`\`\`${question}\`\`\``)
-            .addField('**📤 Answer**', `\`\`\`${replies[reponse]}\`\`\``);
+            .addField('**📤 Answer**', `\`\`\`${replies[response]}\`\`\``);
         return message.channel.send({ embed })
     }
 }

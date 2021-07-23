@@ -21,7 +21,7 @@ module.exports = {
             const articleArr = json.articles;
 
             let processArticle = article => {
-                const embed = new MessageEmbed()
+                return new MessageEmbed()
                     .setColor('#FF4F00')
                     .setTitle(article.title)
                     .setURL(article.url)
@@ -30,7 +30,6 @@ module.exports = {
                     .setThumbnail(article.urlToImage)
                     .setTimestamp(article.publishedAt)
                     .setFooter('powered by NewsAPI.org');
-                return embed;
             };
 
             async function processArray(array) {

@@ -4,33 +4,27 @@
     "description": "faces-discord-bot",
     "main": "index.js",
     "scripts": {
+        "test": "npm install && node index.js",
         "start": "npm install && node index.js"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://gitlab.com/Faces_/bot-discord-faces.git"
+        "url": "git+https://github.com/faceslog/faces-discord-js.git"
     },
-    "author": "",
+    "author": "Faceslog",
     "license": "ISC",
     "bugs": {
-        "url": "https://gitlab.com/Faces_/bot-discord-faces/issues"
+        "url": "https://github.com/faceslog/faces-discord-js"
     },
-    "homepage": "https://gitlab.com/Faces_/bot-discord-faces#readme",
+    "homepage": "https://github.com/faceslog/faces-discord-js",
     "dependencies": {
         "ascii-table": "0.0.9",
-        "asciify-image": "^0.1.6",
         "axios": "^0.21.1",
         "common-tags": "^1.8.0",
         "discord.js": "^12.3.1",
-        "discord.js-commando": "^0.10.0",
         "dotenv": "^8.2.0",
         "genius-lyrics": "^4.1.4",
-        "got": "^11.3.0",
         "mathjs": "^7.0.1",
-        "node-fetch": "^2.6.1",
-        "pornsearch": "^2.4.3",
-        "snekfetch": "^4.0.4",
-        "ytdl-core": "^2.1.7",
-        "ytdl-core-discord": "^1.2.0"
+        "node-fetch": "^2.6.1"
     }
 }

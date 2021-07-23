@@ -14,15 +14,16 @@ module.exports = {
             return message.reply('Please provide me an equation to solve !');
         }
 
-        var equation = args;
+        let equation = args;
+        let solution = null;
 
-        try 
+        try
         {
-            var solution = math.evaluate(equation);
-        } 
+            solution = math.evaluate(equation);
+        }
         catch (err) 
         {
-            return message.channel.send(`❎ | I couldn\'t solve that equation! \`${err}\``)
+            return message.channel.send(`❎ | I could not solve that equation! \`${err}\``)
         }
 
         const embed = new MessageEmbed()

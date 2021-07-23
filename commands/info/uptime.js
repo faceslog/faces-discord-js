@@ -2,9 +2,9 @@ module.exports = {
     name: "uptime",
     aliases: ['alive', 'up'],
     category: "info",
-    description: "Replies with the bot's total uptime.",
+    description: "Replies with the bot total uptime.",
     run: async(client, message, args) => {
-        var seconds = parseInt((client.uptime / 1000) % 60),
+        let seconds = parseInt((client.uptime / 1000) % 60),
             minutes = parseInt((client.uptime / (1000 * 60)) % 60),
             hours = parseInt((client.uptime / (1000 * 60 * 60)) % 24);
         // prettier-ignore

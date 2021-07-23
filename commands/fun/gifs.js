@@ -16,6 +16,7 @@ module.exports = {
             .then(json => message.channel.send(json.results[0].url))
             .catch(e => {
                 message.channel.send('Failed to find a gif that matched your query');
+                console.log(e);
             });
     }
 }
