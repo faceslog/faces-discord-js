@@ -4,7 +4,7 @@ const newsAPI = process.env.NEWS_API;
 
 module.exports = {
     name: "world-news",
-    aliases: ['global-news', 'reuters'],
+    aliases: ['global-news', 'reuters', 'news'],
     category: "utility",
     description: "Replies with the 5 latest world news headlines",
     usage: "<input>",
@@ -25,7 +25,7 @@ module.exports = {
                     .setColor('#FF4F00')
                     .setTitle(article.title)
                     .setURL(article.url)
-                    .setAuthor(article.author)
+                    .setAuthor(article.source.name)
                     .setDescription(article.description)
                     .setThumbnail(article.urlToImage)
                     .setTimestamp(article.publishedAt)
